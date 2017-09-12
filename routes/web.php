@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/messages', 'MessageController@send')->name('messages.send');
 
 Route::get('/groups', 'GroupController@index')->name('group');
 Route::get('/groups/{group}/messages', 'MessageController@index')->name('messages');

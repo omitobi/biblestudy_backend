@@ -9,6 +9,16 @@ class MessageController extends Controller
 {
     public function index(Group $group)
     {
-        return $group->messages()->with('user')->get();
+        $messages = $group->messages()->with('user')->get();
+
+        return view('message', compact('messages'));
+    }
+
+    public function send(Request $request)
+    {
+        $user = $request->user();
+        $user->messages()->create($request->only(['group_id', 'body']));
+
+        return back()->with('status', 'message sent successfully!');
     }
 }

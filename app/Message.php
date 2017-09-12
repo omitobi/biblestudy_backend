@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
 
+    protected $guarded = ['id', 'user_id'];
 
     public function user()
     {
